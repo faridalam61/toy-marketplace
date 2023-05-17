@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Register() {
-  const { createAccount } = useContext(AuthContext);
+  const { createAccount, setProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -11,16 +11,28 @@ function Register() {
     e.preventDefault();
 
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const pass = form.pass.value;
+    const photo = form.photoUrl.value;
+
+    const data = {
+      displayName: name,
+      photoURL: photo,
+    };
+    console.log(data);
     createAccount(email, pass)
       .then(() => {
-        setError("");
-        setSuccess("Account Created");
+        setProfile(data)
+          .then(() => {
+            setError("");
+            setSuccess("Account Created");
+          })
+          .catch((error) => setError(error.message));
       })
       .catch((error) => {
         setSuccess("");
-        setError(error.message);
+        setError(error);
       });
   };
   return (
@@ -28,6 +40,13 @@ function Register() {
       <div className="card-body">
         <h2 className="card-title text-2xl">Create an Account</h2>
         <form onSubmit={handleRegister}>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            className="input input-bordered input-primary w-full mt-4"
+            required
+          />
           <input
             type="email"
             placeholder="Email"
@@ -39,6 +58,13 @@ function Register() {
             type="password"
             placeholder="Password"
             name="pass"
+            className="input input-bordered input-primary w-full mt-6"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Photo URL"
+            name="photoUrl"
             className="input input-bordered input-primary w-full mt-6"
             required
           />
