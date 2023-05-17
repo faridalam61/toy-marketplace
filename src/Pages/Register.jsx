@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Register() {
+  const { createAccount } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -11,7 +13,15 @@ function Register() {
     const form = e.target;
     const email = form.email.value;
     const pass = form.pass.value;
-    console.log(email, pass);
+    createAccount(email, pass)
+      .then(() => {
+        setError("");
+        setSuccess("Account Created");
+      })
+      .catch((error) => {
+        setSuccess("");
+        setError(error.message);
+      });
   };
   return (
     <div className="card w-96 mx-auto my-20 bg-base-100 shadow-xl">

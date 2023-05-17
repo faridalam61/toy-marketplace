@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle, FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Login() {
+  const { signInUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -12,7 +14,15 @@ function Login() {
     const form = e.target;
     const email = form.email.value;
     const pass = form.pass.value;
-    console.log(email, pass);
+    signInUser(email, pass)
+      .then(() => {
+        setError("");
+        setSuccess("Login successfull");
+      })
+      .catch((error) => {
+        setSuccess("");
+        setError(error.message);
+      });
   };
   return (
     <div className="card w-96 mx-auto my-16 bg-base-100 shadow-xl">
