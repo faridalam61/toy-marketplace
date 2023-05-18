@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function AddToy() {
+  const {user} = useContext(AuthContext)
   const handleAddToy = (e)=>{
     e.preventDefault();
     const form = e.target;
@@ -12,9 +15,38 @@ function AddToy() {
     const price = form.price.value;
     const image = form.image.value;
     const description = form.description.value;
+    const email = form.email.value;
 
-    const newToy = {name,seller,category,subCategory,price,qty,image,description}
+    const newToy = {name,seller,category,subCategory,price,qty,image,description,email}
     console.log(newToy)
+    fetch('http://localhost:5000/add-toys',{
+      method:'POST',
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body:JSON.stringify(newToy)
+    })
+    .then(res => res.json())
+    .then(result => {
+      if(result.insertedId){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Product added successfully!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }else{
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ops!! There is an error. Try again',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
+      }
+    })
   }
   return <div>
     <div className="w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
@@ -39,7 +71,7 @@ function AddToy() {
       <input type="number" placeholder="Price" name="price" className="input input-bordered input-secondary w-full" />
       <input type="number" placeholder="Quantity" name="qty" className="input input-bordered input-secondary w-full" />
       <input type="number" placeholder="Ratings" name="ratings" className="input input-bordered input-secondary w-full" />
-      <input type="text" placeholder="Email" name="email" className="input input-bordered input-secondary w-full" hidden/>
+      <input type="text" placeholder="Email" name="email" defaultValue={user && user.email} className="input input-bordered input-secondary w-full" hidden/>
       <input type="text" placeholder="Image URL" name="image" className="input input-bordered input-secondary w-full" />
       </div>
       <textarea className="textarea textarea-secondary w-full my-4" name="description" placeholder="Description"></textarea>

@@ -64,7 +64,7 @@ function Login() {
         <p className="text-sm mt-2">
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
-        <p className="text-center">--Or--</p>
+        <p className="text-center">--Or with Google--</p>
        
           <button onClick={hadnleGoogleLogin} className="flex gap-2 border  border-[#F000B8]  p-3 hover:bg-[#F000B8] hover:text-white text-sm items-center rounded-md">
             <FaGoogle />Login With Google
