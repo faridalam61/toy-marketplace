@@ -4,7 +4,7 @@ import { FaGithub, FaGoogle, FaFacebook } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Login() {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -24,6 +24,14 @@ function Login() {
         setError(error.message);
       });
   };
+
+  const hadnleGoogleLogin = ()=>{
+    googleLogin()
+    .then(()=>{
+      
+    })
+    .catch(error => setError(error.message))
+  }
   return (
     <div className="card w-96 mx-auto my-16 bg-base-100 shadow-xl">
       <div className="card-body">
@@ -33,41 +41,36 @@ function Login() {
             type="email"
             placeholder="Email"
             name="email"
-            className="input input-bordered input-primary w-full mt-4"
+            className="input input-bordered input-secondary w-full mt-4"
             required
           />
           <input
             type="password"
             placeholder="Password"
             name="pass"
-            className="input input-bordered input-primary w-full mt-6"
+            className="input input-bordered input-secondary w-full mt-6"
             required
           />
           <div className="card-actions w-full">
             <input
               type="submit"
-              className="btn mt-6 w-full btn-primary"
+              className="btn mt-6 btn-secondary w-full "
               value="Login"
             />
           </div>
         </form>
         <p className="text-red-500">{error}</p>
         <p className="text-green-500">{success}</p>
-        <p className="text-center">-Or Login with-</p>
-        <div className="flex gap-4 justify-between">
-          <button className="flex gap-2 border  border-[#570DF8]  py-1 px-3 hover:bg-primary hover:text-white text-sm items-center rounded-sm">
-            <FaGithub /> Github
-          </button>
-          <button className="flex gap-2 border  border-[#570DF8]  py-1 px-3 hover:bg-primary hover:text-white text-sm items-center rounded-sm">
-            <FaGoogle /> Google
-          </button>
-          <button className="flex gap-2 border  border-[#570DF8]  py-1 px-3 hover:bg-primary hover:text-white text-sm items-center rounded-sm">
-            <FaFacebook /> Facebo
-          </button>
-        </div>
         <p className="text-sm mt-2">
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
+        <p className="text-center">--Or--</p>
+       
+          <button onClick={hadnleGoogleLogin} className="flex gap-2 border  border-[#F000B8]  p-3 hover:bg-[#F000B8] hover:text-white text-sm items-center rounded-md">
+            <FaGoogle />Login With Google
+          </button>
+
+      
       </div>
     </div>
   );

@@ -106,7 +106,7 @@ function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="bg-[#E80D4A] text-white py-2 px-6 rounded-md"
+              className="bg-[#F000B8] text-white py-2 px-6 rounded-md"
             >
               Login
             </Link>

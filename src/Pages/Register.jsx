@@ -44,34 +44,34 @@ function Register() {
             type="text"
             placeholder="Name"
             name="name"
-            className="input input-bordered input-primary w-full mt-4"
+            className="input input-bordered input-secondary w-full mt-4"
             required
           />
           <input
             type="email"
             placeholder="Email"
             name="email"
-            className="input input-bordered input-primary w-full mt-4"
+            className="input input-bordered input-secondary w-full mt-4"
             required
           />
           <input
             type="password"
             placeholder="Password"
             name="pass"
-            className="input input-bordered input-primary w-full mt-6"
+            className="input input-bordered input-secondary w-full mt-6"
             required
           />
           <input
             type="text"
             placeholder="Photo URL"
             name="photoUrl"
-            className="input input-bordered input-primary w-full mt-6"
+            className="input input-bordered input-secondary w-full mt-6"
             required
           />
           <div className="card-actions w-full">
             <input
               type="submit"
-              className="btn mt-6 w-full btn-primary"
+              className="btn mt-6 w-full btn-secondary"
               value="Sign Up"
             />
           </div>

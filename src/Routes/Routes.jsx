@@ -8,11 +8,13 @@ import AllToy from "../Pages/AllToy";
 import MyToy from "../Pages/MyToy";
 import AddToy from "../Pages/AddToy";
 import Blog from "../Pages/Blog";
+import NotFound from "../Pages/NotFound";
 
 const routers = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement:<NotFound/>,
     children: [
       {
         path: "/",
