@@ -45,7 +45,7 @@ function MyToyCard({ toys }) {
                             <th>
                                 <div className='flex gap-4 justify-center'>
                                 <Link to={`/update/${toy._id}`} className="btn btn-ghost btn-xs">Edit</Link>
-                                <button className="btn btn-ghost btn-xs">View Details</button>
+                                <Link to={`/product-details/${toy._id}`}  className="btn btn-ghost btn-xs">View Details</Link>
                                 </div>
                             </th>
                         </tr>

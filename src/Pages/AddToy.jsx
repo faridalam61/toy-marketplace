@@ -36,6 +36,7 @@ function AddToy() {
           showConfirmButton: false,
           timer: 1500
         })
+        form.reset();
       }else{
         Swal.fire({
           position: 'center',
@@ -54,7 +55,7 @@ function AddToy() {
       <form onSubmit={handleAddToy}>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <input type="text" placeholder="Toy Name" name="name" className="input input-bordered input-secondary w-full" />
-      <input type="text" placeholder="Seller" name="seller" className="input input-bordered input-secondary w-full" />
+      <input type="text" placeholder="Seller" defaultValue={user && user.displayName} name="seller" className="input input-bordered input-secondary w-full" />
       <select className="select select-secondary w-full" name="category">
   <option disabled defaultValue="">Select Category</option>
   <option defaultValue="java">Java</option>

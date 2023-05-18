@@ -17,12 +17,17 @@ function MyToys() {
     },[]);
 
   return (
+   !loading ? 
     <div className="overflow-x-auto w-3/4 mx-auto my-10">
+       {myToys.length > 0 ? (<div>
+        
       <h2 className='text-2xl font-bold mb-4'>Total Toys: {myToys.length}</h2>
   {
-    loading ? <h2>Loading..</h2> : <MyToyCard toys={myToys}/>
+    <MyToyCard toys={myToys}/>
   }
+        </div>) : <h2 className='text-xl text-center'>You haven't added any products</h2>}
 </div>
+: <h2>Loading...</h2>
   )
 }
 
