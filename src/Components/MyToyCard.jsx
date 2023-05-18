@@ -40,6 +40,7 @@ function MyToyCard({ toys }) {
         <tr>
           <th>SN</th>
           <th>Products</th>
+          <th>Price</th>
           <th>Qty</th>
           <th className="text-center">Action</th>
         </tr>
@@ -66,7 +67,8 @@ function MyToyCard({ toys }) {
                 </div>
               </div>
             </td>
-            <td>30</td>
+            <td>${toy.price} USD</td>
+            <td>{toy.qty}</td>
             <th>
               <div className="flex gap-2 justify-center">
                 <Link

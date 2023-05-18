@@ -11,13 +11,11 @@ import NotFound from "../Pages/NotFound";
 import UpdateToy from "../Pages/UpdateToy";
 import MyToys from "../Pages/MyToys";
 
-
-
 const routers = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement:<NotFound/>,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
@@ -48,9 +46,10 @@ const routers = createBrowserRouter([
         element: <Blog />,
       },
       {
-        path:'/update/:id',
-        element:<UpdateToy/>
-      }
+        path: "/update/:id",
+        element: <UpdateToy />,
+        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+      },
     ],
   },
 ]);
