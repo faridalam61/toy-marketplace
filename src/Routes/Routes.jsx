@@ -11,6 +11,8 @@ import NotFound from "../Pages/NotFound";
 import UpdateToy from "../Pages/UpdateToy";
 import MyToys from "../Pages/MyToys";
 
+
+
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -46,7 +48,7 @@ const routers = createBrowserRouter([
         element: <Blog />,
       },
       {
-        path:'/update',
+        path:'/update/:id',
         element:<UpdateToy/>
       }
     ],
