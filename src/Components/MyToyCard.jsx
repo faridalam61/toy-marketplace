@@ -1,10 +1,23 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../AuthProvider/AuthProvider'
 import { Link } from 'react-router-dom';
+import { FaRegEdit, FaRegEye, FaArchive } from "react-icons/fa";
+
 
 function MyToyCard({ toys }) {
     const { user } = useContext(AuthContext);
-    console.log(toys)
+    const handleDelete = (id)=>{
+        console.log(id)
+        fetch(`http://localhost:5000/delete/${id}`,{
+            method: 'DELETE',
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body:JSON.stringify(id)
+        })
+        .then(res => res.json())
+        .then(result => console.log(result))
+    }
     return (
         <table className="table w-full">
 
@@ -23,7 +36,7 @@ function MyToyCard({ toys }) {
                         <tr>
                             <th>
                                 <label>
-                                   {idx}
+                                   {idx+1}
                                 </label>
                             </th>
                             <td>
@@ -43,9 +56,10 @@ function MyToyCard({ toys }) {
                                 30
                             </td>
                             <th>
-                                <div className='flex gap-4 justify-center'>
-                                <Link to={`/update/${toy._id}`} className="btn btn-ghost btn-xs">Edit</Link>
-                                <Link to={`/product-details/${toy._id}`}  className="btn btn-ghost btn-xs">View Details</Link>
+                                <div className='flex gap-2 justify-center'>
+                                <Link to={`/update/${toy._id}`} className="btn btn-ghost btn-xs gap-1 flex"><FaRegEdit/> Edit</Link>
+                                <Link to={`/product-details/${toy._id}`}  className="btn btn-ghost btn-xs flex gap-1"><FaRegEye/> View</Link>
+                                <button onClick={()=>handleDelete(toy._id)} className="btn btn-ghost btn-xs flex gap-1"><FaArchive/>Delete</button>
                                 </div>
                             </th>
                         </tr>
