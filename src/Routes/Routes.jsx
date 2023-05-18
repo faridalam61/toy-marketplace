@@ -9,6 +9,7 @@ import MyToy from "../Pages/MyToy";
 import AddToy from "../Pages/AddToy";
 import Blog from "../Pages/Blog";
 import NotFound from "../Pages/NotFound";
+import UpdateToy from "../Pages/UpdateToy";
 
 const routers = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const routers = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
       },
+      {
+        path:'/update',
+        element:<UpdateToy/>
+      }
     ],
   },
 ]);
