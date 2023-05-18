@@ -39,7 +39,7 @@ function UpdateToy() {
   return (
     <div>
       <div className="w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
-        <h1 className="text-3xl font-bold mb-6">Update Toy_Name</h1>
+        <h1 className="text-3xl font-bold mb-6">Update {toy.name}</h1>
         <form onSubmit={handleUpdate}>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div>
