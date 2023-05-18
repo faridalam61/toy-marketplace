@@ -5,11 +5,11 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AllToy from "../Pages/AllToy";
-import MyToy from "../Pages/MyToy";
 import AddToy from "../Pages/AddToy";
 import Blog from "../Pages/Blog";
 import NotFound from "../Pages/NotFound";
 import UpdateToy from "../Pages/UpdateToy";
+import MyToys from "../Pages/MyToys";
 
 const routers = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const routers = createBrowserRouter([
       },
       {
         path: "/my-toy",
-        element: <MyToy />,
+        element: <MyToys />,
       },
       {
         path: "/add-a-toy",
