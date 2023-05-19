@@ -47,7 +47,7 @@ function MyToyCard({ toys }) {
       </thead>
       <tbody>
         {toys.map((toy, idx) => (
-          <tr>
+          <tr key={idx}>
             <th>
               <label>{idx + 1}</label>
             </th>
