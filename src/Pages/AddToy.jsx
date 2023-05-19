@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function AddToy() {
   const { user } = useContext(AuthContext);
+  const [category, setCategory] = useState("");
+  const handleChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   const handleAddToy = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -79,10 +84,12 @@ function AddToy() {
               name="seller"
               className="input input-bordered input-secondary w-full"
             />
-            <select className="select select-secondary w-full" name="category">
-              <option disabled defaultValue="">
-                Select Category
-              </option>
+            <select
+              className="select select-secondary w-full"
+              name="category"
+              onChange={handleChange}
+            >
+              <option defaultValue="">Select Category</option>
               <option defaultValue="java">Java</option>
               <option defaultValue="go">Go</option>
               <option defaultValue="c">C</option>
@@ -91,12 +98,29 @@ function AddToy() {
               className="select select-secondary w-full"
               name="subCategory"
             >
-              <option disabled defaultValue="">
-                Select Sub Category
-              </option>
-              <option defaultValue="java">Java</option>
-              <option defaultValue="go">Go</option>
-              <option defaultValue="c">C</option>
+              {category == "" && <option defaultValue=""></option>}
+
+              {category == "Java" && (
+                <>
+                  <option defaultValue="java">Java sub</option>
+                  <option defaultValue="go">Java sub 2</option>
+                  <option defaultValue="go">Java sub 3</option>
+                </>
+              )}
+              {category == "Go" && (
+                <>
+                  <option defaultValue="java">Go sub</option>
+                  <option defaultValue="go">Go sub 2</option>
+                  <option defaultValue="go">Go sub 3</option>
+                </>
+              )}
+              {category == "C" && (
+                <>
+                  <option defaultValue="java">C sub</option>
+                  <option defaultValue="go">C sub 2</option>
+                  <option defaultValue="go">C sub 3</option>
+                </>
+              )}
             </select>
 
             <input
