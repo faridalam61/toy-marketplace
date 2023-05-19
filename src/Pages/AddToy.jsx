@@ -16,7 +16,6 @@ function AddToy() {
     const seller = form.seller.value;
     const category = form.category.value;
     const qty = form.qty.value;
-    const subCategory = form.subCategory.value;
     const price = form.price.value;
     const image = form.image.value;
     const description = form.description.value;
@@ -27,7 +26,6 @@ function AddToy() {
       name,
       seller,
       category,
-      subCategory,
       price,
       qty,
       image,
@@ -90,39 +88,10 @@ function AddToy() {
               onChange={handleChange}
             >
               <option defaultValue="">Select Category</option>
-              <option defaultValue="java">Java</option>
-              <option defaultValue="go">Go</option>
-              <option defaultValue="c">C</option>
+              <option defaultValue="race-cars">Race Cars</option>
+              <option defaultValue="ride-ons">Ride-ons</option>
+              <option defaultValue="rc">Remote Controlled</option>
             </select>
-            <select
-              className="select select-secondary w-full"
-              name="subCategory"
-            >
-              {category == "" && <option defaultValue=""></option>}
-
-              {category == "Java" && (
-                <>
-                  <option defaultValue="java">Java sub</option>
-                  <option defaultValue="go">Java sub 2</option>
-                  <option defaultValue="go">Java sub 3</option>
-                </>
-              )}
-              {category == "Go" && (
-                <>
-                  <option defaultValue="java">Go sub</option>
-                  <option defaultValue="go">Go sub 2</option>
-                  <option defaultValue="go">Go sub 3</option>
-                </>
-              )}
-              {category == "C" && (
-                <>
-                  <option defaultValue="java">C sub</option>
-                  <option defaultValue="go">C sub 2</option>
-                  <option defaultValue="go">C sub 3</option>
-                </>
-              )}
-            </select>
-
             <input
               type="number"
               placeholder="Price"
@@ -143,17 +112,17 @@ function AddToy() {
             />
             <input
               type="text"
+              placeholder="Image URL"
+              name="image"
+              className="input input-bordered input-secondary w-full"
+            />
+            <input
+              type="text"
               placeholder="Email"
               name="email"
               defaultValue={user && user.email}
               className="input input-bordered input-secondary w-full"
-              hidden
-            />
-            <input
-              type="text"
-              placeholder="Image URL"
-              name="image"
-              className="input input-bordered input-secondary w-full"
+              disabled
             />
           </div>
           <textarea

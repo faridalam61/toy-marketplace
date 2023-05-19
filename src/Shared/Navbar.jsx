@@ -14,7 +14,7 @@ function Navbar() {
       .catch((error) => alert(error.message));
   };
   return (
-    <div className="bg-base-100 container mx-auto">
+    <div className="bg-base-100 sticky top-0 z-40 px-6">
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
