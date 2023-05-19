@@ -19,7 +19,7 @@ function MyToyCard({ toys }) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://toy-cars-server-rho.vercel.app/delete/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

@@ -34,7 +34,7 @@ function AddToy() {
       rating,
     };
     console.log(newToy);
-    fetch("http://localhost:5000/add-toys", {
+    fetch("https://toy-cars-server-rho.vercel.app/add-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

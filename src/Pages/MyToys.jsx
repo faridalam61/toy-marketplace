@@ -9,7 +9,7 @@ function MyToys() {
   const [sort, setSort] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${user.email}`)
+    fetch(`https://toy-cars-server-rho.vercel.app/toys/${user.email}`)
       .then((res) => res.json())
       .then((toys) => {
         if (sort == "Descending") {

@@ -8,7 +8,7 @@ function Home() {
   const [tab, setTab] = useState("Race cars");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category/${tab}`)
+    fetch(`https://toy-cars-server-rho.vercel.app/category/${tab}`)
       .then((res) => res.json())
       .then((result) => setToys(result));
   }, [tab]);
