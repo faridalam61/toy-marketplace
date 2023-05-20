@@ -6,6 +6,7 @@ import useTitle from "../Hooks/useTitle";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SecondaryBanner from "../Components/SecondaryBanner";
+import About from "../Components/About";
 AOS.init();
 
 function Home() {
@@ -57,6 +58,12 @@ function Home() {
           ))}
         </div>
         <SecondaryBanner />
+        <div className="w-full px-6 lg:px-0 lg:w-3/4 mx-auto mb-10">
+          <h2 className="text-2xl lg:text-3xl text-center mb-8 mt-16">
+            Made of high quality materials and by highest possible standards
+          </h2>
+          <About />
+        </div>
       </div>
     </div>
   );
