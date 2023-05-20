@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Hero from "../Components/Hero";
 import PhotoGallery from "../Gallery/PhotoGallery";
-import ToyCard from "../Components/ToyCard";
 import ToyCardHome from "../Components/ToyCardHome";
 import useTitle from "../Hooks/useTitle";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 
 function Home() {
   useTitle('Home')

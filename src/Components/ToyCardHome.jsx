@@ -6,7 +6,7 @@ function ToyCardHome({ toys }) {
   console.log(toys);
   const { _id, image, name, rating, price, qty } = toys;
   return (
-    <div className="shadow-md rounded-md">
+    <div className="shadow-md rounded-md" data-aos="zoom-in">
       <div className="bg-slate-100 rounded-lg p-6 mb-2">
         <img src={image ? image : logo} alt={name} className="mx-auto h-40" />
       </div>

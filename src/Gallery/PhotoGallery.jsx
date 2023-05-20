@@ -4,7 +4,7 @@ import Gallery from "react-photo-gallery";
 
 function PhotoGallery() {
   return (
-    <div>
+    <div data-aos="zoom-in">
       <Gallery photos={photos} />;
     </div>
   );
