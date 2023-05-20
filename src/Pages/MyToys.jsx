@@ -11,7 +11,7 @@ function MyToys() {
   const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`https://toy-cars-server-rho.vercel.app/toys/${user.email}`)
+    fetch(`http://localhost:5000/toys/${user.email}`)
       .then((res) => res.json())
       .then((toys) => {
         if (sort == "Descending") {
@@ -49,7 +49,7 @@ function MyToys() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://toy-cars-server-rho.vercel.app/delete/${id}`, {
+        fetch(`http://localhost:5000/delete/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

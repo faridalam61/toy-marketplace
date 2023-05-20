@@ -14,7 +14,7 @@ function UpdateToy() {
     const description = form.description.value;
     const updatedToy = { price, qty, description };
     console.log(updatedToy);
-    fetch(`https://toy-cars-server-rho.vercel.app/update/${toy._id}`, {
+    fetch(`http://localhost:5000/update/${toy._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -49,7 +49,7 @@ function UpdateToy() {
                 placeholder="Price"
                 name="price"
                 defaultValue={toy.price}
-                className="input input-bordered input-secondary w-full"
+                className="border py-2 px-4 rounded-md w-full"
               />
             </div>
             <div>
@@ -59,20 +59,20 @@ function UpdateToy() {
                 placeholder="Quantity"
                 name="qty"
                 defaultValue={toy.qty}
-                className="input input-bordered input-secondary w-full"
+                className="border py-2 px-4 rounded-md w-full"
               />
             </div>
           </div>
           <label className="block mt-3 mb-2">Description</label>
           <textarea
-            className="textarea textarea-secondary w-full mb-4"
+            className="textareaborder py-2 px-4 rounded-md w-full mb-4"
             name="description"
             defaultValue={toy.description}
             placeholder="Description"
           ></textarea>
           <input
             type="submit"
-            className="btn btn-secondary w-full"
+            className="btn hover:bg-[#2EBFED] hover:border-[#2EBFED] border-[#ff6899] bg-[#ff6899] w-full"
             value="Update Toy"
           />
         </form>

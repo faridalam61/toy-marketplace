@@ -4,7 +4,7 @@ import ToyCard from "../Components/ToyCard";
 function AllToy() {
   const [toys, setToys] = useState([]);
   useEffect(() => {
-    fetch("https://toy-cars-server-rho.vercel.app/toys")
+    fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((result) => setToys(result));
   }, []);

@@ -34,7 +34,7 @@ function AddToy() {
       rating,
     };
     console.log(newToy);
-    fetch("https://toy-cars-server-rho.vercel.app/add-toys", {
+    fetch("http://localhost:5000/add-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,7 +65,7 @@ function AddToy() {
   };
   return (
     <div>
-      <div className="w-full px-4 lg:px-0 lg:w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
+      <div className="w-full px-4 lg:px-8 lg:w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
         <h1 className="text-3xl font-bold text-[#ff6899] mb-6">Add A Toy</h1>
         <form onSubmit={handleAddToy}>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
