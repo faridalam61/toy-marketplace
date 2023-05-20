@@ -3,10 +3,9 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaRegEye, FaArchive } from "react-icons/fa";
 
-
-function MyToyCard({ toys,deleted }) {
+function MyToyCard({ toys, deleted }) {
   const { user } = useContext(AuthContext);
-  
+
   const handleDelete = deleted;
   return (
     <table className="table w-full">

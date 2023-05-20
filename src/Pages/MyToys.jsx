@@ -67,7 +67,7 @@ function MyToys() {
   };
 
   return !loading ? (
-    <div className="overflow-x-auto w-3/4 mx-auto my-10">
+    <div className="overflow-x-auto w-full px-4 lg:px-0 lg:w-3/4 mx-auto my-10">
       {myToys.length > 0 ? (
         <div>
           <div className="flex items-center mb-6 justify-between">

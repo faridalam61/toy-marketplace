@@ -12,7 +12,8 @@ function AllToy() {
   const toyLimit = toys.slice(0, 8);
   return (
     <div className="container mx-auto my-10">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 ">
+      <h2 className="text-center font-bold text-2xl my-6">All Products</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-4 px-4 lg:px-0 gap-6 ">
         {toyLimit.map((toy, idx) => (
           <ToyCard key={idx} toys={toy} />
         ))}

@@ -31,7 +31,7 @@ function Login() {
 
   const hadnleGoogleLogin = () => {
     googleLogin()
-      .then(() => {})
+      .then(() => navigate(from))
       .catch((error) => setError(error.message));
   };
   return (
