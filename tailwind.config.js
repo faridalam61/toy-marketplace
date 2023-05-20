@@ -20,4 +20,5 @@ export default {
     prefix: "",
     darkTheme: "light",
   },
+  
 }

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../public/logo.png";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import ActiveRoute from "../Routes/ActiveRoute";
 
 function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
@@ -39,24 +40,24 @@ function Navbar() {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
+                <ActiveRoute to="/">Home</ActiveRoute>
               </li>
               <li>
-                <Link to="/all-toy">All Toy</Link>
+                <ActiveRoute to="/all-toy">All Toy</ActiveRoute>
               </li>
               {user && (
                 <li>
-                  <Link to="/my-toy">My Toy</Link>
+                  <ActiveRoute to="/my-toy">My Toy</ActiveRoute>
                 </li>
               )}
               {user && (
                 <li>
-                  <Link to="/add-a-toy">Add A Toy</Link>
+                  <ActiveRoute to="/add-a-toy">Add A Toy</ActiveRoute>
                 </li>
               )}
 
               <li>
-                <Link to="/blog">Blogs</Link>
+                <ActiveRoute to="/blog">Blogs</ActiveRoute>
               </li>
             </ul>
           </div>
@@ -67,24 +68,24 @@ function Navbar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to="/">Home</Link>
+            <ActiveRoute to="/">Home</ActiveRoute>
             </li>
             <li>
-              <Link to="/all-toy">All Toy</Link>
+              <ActiveRoute to="/all-toy">All Toy</ActiveRoute>
             </li>
             {user && (
               <li>
-                <Link to="/my-toy">My Toy</Link>
+                <ActiveRoute to="/my-toy">My Toy</ActiveRoute>
               </li>
             )}
             {user && (
               <li>
-                <Link to="/add-a-toy">Add A Toy</Link>
+                <ActiveRoute to="/add-a-toy">Add A Toy</ActiveRoute>
               </li>
             )}
 
             <li>
-              <Link to="/blog">Blogs</Link>
+              <ActiveRoute to="/blog">Blogs</ActiveRoute>
             </li>
           </ul>
         </div>
@@ -97,7 +98,7 @@ function Navbar() {
                 className="w-12 rounded-full"
               />
               <button
-                className="bg-[#E80D4A] ms-4 text-white py-2 px-3 rounded-md"
+                className="bg-[#ff6899] hover:bg-[#2EBFED] ms-4 text-white py-2 px-3 rounded-md"
                 onClick={handleLogout}
               >
                 Logout
@@ -106,7 +107,7 @@ function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="bg-[#F000B8] text-white py-2 px-6 rounded-md"
+              className="bg-[#ff6899] hover:bg-[#2EBFED] text-white py-2 px-6 rounded-md"
             >
               Login
             </Link>

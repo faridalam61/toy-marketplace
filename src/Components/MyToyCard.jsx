@@ -1,39 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaRegEye, FaArchive } from "react-icons/fa";
-import Swal from "sweetalert2";
 
-function MyToyCard({ toys }) {
+
+function MyToyCard({ toys,deleted }) {
   const { user } = useContext(AuthContext);
-  const handleDelete = (id) => {
-    console.log(id);
-
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`https://toy-cars-server-rho.vercel.app/delete/${id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((result) => {
-            if (result.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            }
-          });
-      }
-    });
-  };
+  
+  const handleDelete = deleted;
   return (
     <table className="table w-full">
       <thead>
@@ -41,7 +15,7 @@ function MyToyCard({ toys }) {
           <th>SN</th>
           <th>Products</th>
           <th>Price</th>
-          <th>Qty</th>
+          <th>Stock</th>
           <th className="text-center">Action</th>
         </tr>
       </thead>

@@ -4,7 +4,7 @@ function Blog() {
   return (
     <div className="w-full lg:w-3/4 p-4 lg:p-0 mx-auto my-8">
       <div className="border p-4 lg:p-6 rounded-md my-6">
-        <h1 className="text-2xl font-bold mb-2">
+        <h1 className="text-2xl font-bold mb-2 text-[#ff6899]">
           What is an access token and refresh token? How do they work and where
           should we store them on the client-side?
         </h1>
@@ -50,7 +50,7 @@ function Blog() {
         </p>
       </div>
       <div className="border p-4 lg:p-6 rounded-md my-6">
-        <h2 className="text-2xl font-bold mb-2">
+        <h2 className="text-2xl font-bold mb-2 text-[#ff6899]">
           Comparation of SQL and NoSQL databases
         </h2>
         <table>
@@ -124,7 +124,7 @@ function Blog() {
         </table>
       </div>
       <div className="border p-4 lg:p-6 rounded-md my-6">
-        <h2 className="text-2xl font-bold mb-2">
+        <h2 className="text-2xl font-bold mb-2 text-[#ff6899]">
           What is express js? What is Nest JS?
         </h2>
         <p>
@@ -148,7 +148,7 @@ function Blog() {
         </p>
       </div>
       <div className="border p-4 lg:p-6 rounded-md my-6">
-        <h2 className="text-2xl font-bold mb-2">
+        <h2 className="text-2xl font-bold mb-2 text-[#ff6899]">
           What is MongoDB aggregate and how does it work?
         </h2>
         <p>

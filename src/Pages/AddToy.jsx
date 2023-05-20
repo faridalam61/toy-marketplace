@@ -34,7 +34,7 @@ function AddToy() {
       rating,
     };
     console.log(newToy);
-    fetch("https://toy-cars-server-rho.vercel.app/add-toys", {
+    fetch("http://localhost:5000/add-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -66,24 +66,26 @@ function AddToy() {
   return (
     <div>
       <div className="w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
-        <h1 className="text-3xl font-bold mb-6">Add A Toy</h1>
+        <h1 className="text-3xl font-bold text-[#ff6899] mb-6">Add A Toy</h1>
         <form onSubmit={handleAddToy}>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <input
               type="text"
               placeholder="Toy Name"
               name="name"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
+              required
             />
             <input
               type="text"
               placeholder="Seller"
               defaultValue={user && user.displayName}
               name="seller"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
+              required
             />
             <select
-              className="select select-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
               name="category"
               onChange={handleChange}
             >
@@ -96,43 +98,45 @@ function AddToy() {
               type="number"
               placeholder="Price"
               name="price"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
+              required
             />
             <input
               type="number"
               placeholder="Quantity"
               name="qty"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
+              required
             />
             <input
               type="number"
               placeholder="Ratings"
               name="ratings"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
             />
             <input
               type="text"
               placeholder="Image URL"
               name="image"
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
             />
             <input
               type="text"
               placeholder="Email"
               name="email"
               defaultValue={user && user.email}
-              className="input input-bordered input-secondary w-full"
+              className="border py-2 px-4 rounded-md w-full"
               disabled
             />
           </div>
           <textarea
-            className="textarea textarea-secondary w-full my-4"
+            className="textarea border py-2 px-4 rounded-md w-full my-4"
             name="description"
             placeholder="Description"
           ></textarea>
           <input
             type="submit"
-            className="btn btn-secondary w-full"
+            className="btn hover:bg-[#2EBFED] hover:border-[#2EBFED] border-[#ff6899] bg-[#ff6899] w-full"
             value="Add Toy"
           />
         </form>
