@@ -4,7 +4,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import useTitle from "../Hooks/useTitle";
 
 function AddToy() {
-  useTitle('Add Toy')
+  useTitle("Add Toy");
   const { user } = useContext(AuthContext);
   const [category, setCategory] = useState("");
   const handleChange = (e) => {
@@ -36,7 +36,7 @@ function AddToy() {
       rating,
     };
     console.log(newToy);
-    fetch("http://localhost:5000/add-toys", {
+    fetch("https://toy-cars-server-rho.vercel.app/add-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useTitle from "../Hooks/useTitle";
 
 function MyToys() {
-  useTitle('My Toys')
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [myToys, setMyToys] = useState([]);
@@ -13,7 +13,7 @@ function MyToys() {
   const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${user.email}`)
+    fetch(`https://toy-cars-server-rho.vercel.app/toys/${user.email}`)
       .then((res) => res.json())
       .then((toys) => {
         if (sort == "Highest Price") {
@@ -58,7 +58,7 @@ function MyToys() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://toy-cars-server-rho.vercel.app/delete/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
