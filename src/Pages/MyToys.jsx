@@ -8,29 +8,29 @@ function MyToys() {
   const [loading, setLoading] = useState(true);
   const [myToys, setMyToys] = useState([]);
   const [sort, setSort] = useState("");
-  const [isDeleted, setIsDeleted] = useState(false)
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${user.email}`)
+    fetch(`https://toy-cars-server-rho.vercel.app/toys/${user.email}`)
       .then((res) => res.json())
       .then((toys) => {
         if (sort == "Descending") {
           const dsc = toys.sort().reverse();
           setMyToys(dsc);
           setLoading(false);
-          setIsDeleted(false)
+          setIsDeleted(false);
         }
-        if (sort == "Aescending" || sort =='Default') {
+        if (sort == "Aescending" || sort == "Default") {
           const asc = toys.sort();
           setMyToys(asc);
           setLoading(false);
-          setIsDeleted(false)
+          setIsDeleted(false);
         }
         setMyToys(toys);
         setLoading(false);
-        setIsDeleted(false)
+        setIsDeleted(false);
       });
-  }, [sort,isDeleted]);
+  }, [sort, isDeleted, myToys]);
 
   const handleSort = (e) => {
     const sorted = e.target.value;
@@ -49,7 +49,7 @@ function MyToys() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://toy-cars-server-rho.vercel.app/delete/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -59,7 +59,7 @@ function MyToys() {
           .then((result) => {
             if (result.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              setIsDeleted(true)
+              setIsDeleted(true);
             }
           });
       }
@@ -71,18 +71,20 @@ function MyToys() {
       {myToys.length > 0 ? (
         <div>
           <div className="flex items-center mb-6 justify-between">
-            <h2 className="text-2xl font-bold text-[#ff6899]">Total Toys: {myToys.length}</h2>
-            
+            <h2 className="text-2xl font-bold text-[#ff6899]">
+              Total Toys: {myToys.length}
+            </h2>
+
             <div className="flex gap-2 items-center">
-        <p>Sort</p>
-            <select
-              onChange={handleSort}
-              className="py-2 px-4 border rounded-md w-44"
-            >
-              <option>Default</option>
-              <option>Descending</option>
-              <option>Ascending</option>
-            </select>
+              <p>Sort</p>
+              <select
+                onChange={handleSort}
+                className="py-2 px-4 border rounded-md w-44"
+              >
+                <option>Default</option>
+                <option>Descending</option>
+                <option>Ascending</option>
+              </select>
             </div>
           </div>
           {<MyToyCard toys={myToys} deleted={handleDelete} />}
