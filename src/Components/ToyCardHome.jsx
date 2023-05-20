@@ -14,16 +14,15 @@ function ToyCardHome({ toys }) {
         <h1 className="text-md text-black">{name}</h1>
         <p>Available stock {qty} </p>
         <p className="text-bold text-lg text-black">${price} USD</p>
-        <p>{rating}</p>
+        <p>Ratings: {rating}</p>
       </div>
       <div className="px-4 pb-4">
-
-      <Link
-        to={`/product-details/${_id}`}
-        className="btn hover:bg-[#2EBFED] hover:border-[#2EBFED] border-[#ff6899] bg-[#ff6899] w-full"
-      >
-        View Details
-      </Link>
+        <Link
+          to={`/product-details/${_id}`}
+          className="btn hover:bg-[#2EBFED] hover:border-[#2EBFED] border-[#ff6899] bg-[#ff6899] w-full"
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );
