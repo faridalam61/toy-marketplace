@@ -16,18 +16,25 @@ function MyToys() {
     fetch(`http://localhost:5000/toys/${user.email}`)
       .then((res) => res.json())
       .then((toys) => {
-        if (sort == "Descending") {
-          const dsc = toys.sort().reverse();
+        if (sort == "Highest Price") {
+          const dsc = toys.sort((a, b) => b.price - a.price);
           setMyToys(dsc);
           setLoading(false);
           setIsDeleted(false);
         }
-        if (sort == "Aescending" || sort == "Default") {
-          const asc = toys.sort();
+        if (sort == "Lowest Price") {
+          const asc = toys.sort((a, b) => a.price - b.price);
           setMyToys(asc);
           setLoading(false);
           setIsDeleted(false);
         }
+        if (sort == "Default") {
+          const defaultA = toys.sort();
+          setMyToys(defaultA);
+          setLoading(false);
+          setIsDeleted(false);
+        }
+
         setMyToys(toys);
         setLoading(false);
         setIsDeleted(false);
@@ -78,14 +85,14 @@ function MyToys() {
             </h2>
 
             <div className="flex gap-2 items-center">
-              <p>Sort</p>
+              <p>Sort by</p>
               <select
                 onChange={handleSort}
                 className="py-2 px-4 border rounded-md w-44"
               >
                 <option>Default</option>
-                <option>Descending</option>
-                <option>Ascending</option>
+                <option>Highest Price</option>
+                <option>Lowest Price</option>
               </select>
             </div>
           </div>
