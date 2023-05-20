@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaGithub, FaGoogle, FaFacebook } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Login() {
   const { signInUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,6 +21,7 @@ function Login() {
       .then(() => {
         setError("");
         setSuccess("Login successfull");
+        navigate(from);
       })
       .catch((error) => {
         setSuccess("");
@@ -25,13 +29,11 @@ function Login() {
       });
   };
 
-  const hadnleGoogleLogin = ()=>{
+  const hadnleGoogleLogin = () => {
     googleLogin()
-    .then(()=>{
-      
-    })
-    .catch(error => setError(error.message))
-  }
+      .then(() => {})
+      .catch((error) => setError(error.message));
+  };
   return (
     <div className="card w-96 mx-auto my-16 bg-base-100 shadow-xl">
       <div className="card-body">
@@ -65,12 +67,14 @@ function Login() {
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
         <p className="text-center">--Or with Google--</p>
-       
-          <button onClick={hadnleGoogleLogin} className="flex gap-2 border  border-[#F000B8]  p-3 hover:bg-[#F000B8] hover:text-white text-sm items-center rounded-md">
-            <FaGoogle />Login With Google
-          </button>
 
-      
+        <button
+          onClick={hadnleGoogleLogin}
+          className="flex gap-2 border  border-[#F000B8]  p-3 hover:bg-[#F000B8] hover:text-white text-sm items-center rounded-md"
+        >
+          <FaGoogle />
+          Login With Google
+        </button>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import NotFound from "../Pages/NotFound";
 import UpdateToy from "../Pages/UpdateToy";
 import MyToys from "../Pages/MyToys";
 import ProductDetails from "../Pages/ProductDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const routers = createBrowserRouter([
   {
@@ -36,11 +37,20 @@ const routers = createBrowserRouter([
       },
       {
         path: "/my-toy",
-        element: <MyToys />,
+        element: (
+          <PrivateRoute>
+            <MyToys />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-a-toy",
-        element: <AddToy />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddToy />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog",
@@ -48,13 +58,21 @@ const routers = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <UpdateToy />,
+        element: (
+          <PrivateRoute>
+            <UpdateToy />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://toy-cars-server-rho.vercel.app/toy/${params.id}`),
       },
       {
         path: "/product-details/:id",
-        element: <ProductDetails />,
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://toy-cars-server-rho.vercel.app/toy/${params.id}`),
       },

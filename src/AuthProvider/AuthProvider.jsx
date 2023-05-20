@@ -12,11 +12,12 @@ import {
 import app from "../Firebase/Firebase.config";
 
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider()
+const provider = new GoogleAuthProvider();
 
 export const AuthContext = createContext(null);
 function AuthProvider({ children }) {
   const [user, setUser] = useState([]);
+  const [dataLoading, setDataLoading] = useState(true);
 
   //Create account
   const createAccount = (email, pass) => {
@@ -38,14 +39,15 @@ function AuthProvider({ children }) {
   const setProfile = (data) => {
     return updateProfile(auth.currentUser, data);
   };
-// Google sign in
-const googleLogin = ()=>{
-  return signInWithPopup(auth,provider);
-}
+  // Google sign in
+  const googleLogin = () => {
+    return signInWithPopup(auth, provider);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setDataLoading(false);
     });
     return () => unsubscribe();
   }, []);
@@ -55,7 +57,8 @@ const googleLogin = ()=>{
     signInUser,
     signOutUser,
     setProfile,
-    googleLogin
+    googleLogin,
+    dataLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
