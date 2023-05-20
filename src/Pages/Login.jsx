@@ -3,6 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import useTitle from "../Hooks/useTitle";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function Login() {
   useTitle('Login')
@@ -12,6 +16,19 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+
+  if(from != '/'){
+    toast.error('You have to log in first to view details', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -78,6 +95,19 @@ function Login() {
           Login With Google
         </button>
       </div>
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+limit={1}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
     </div>
   );
 }
