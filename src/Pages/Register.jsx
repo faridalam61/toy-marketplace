@@ -25,17 +25,13 @@ function Register() {
     createAccount(email, pass)
       .then(() => {
         setProfile(data)
-          .then(() => {
-            setError("");
-            setSuccess("Account Created");
-            navigate('/')
-          })
-          .catch((error) => setError(error.message));
+        .then(()=> navigate('/'))
+        .catch(error => console.log(error));
+        setError('')
+        setSuccess('Account Created Successfully!')
       })
-      .catch((error) => {
-        setSuccess("");
-        setError(error);
-      });
+          .catch((error) => setError(error.message));
+    
   };
   return (
     <div className="card w-96 mx-auto my-20 bg-base-100 shadow-xl">
