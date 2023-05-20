@@ -1,7 +1,9 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import useTitle from "../Hooks/useTitle";
 
 function ProductDetails() {
+
   const toy = useLoaderData();
   const {
     _id,
@@ -16,7 +18,7 @@ function ProductDetails() {
     description,
     rating,
   } = toy;
-  console.log(toy);
+  useTitle(name);
   return (
     <div className="w-3/4 mx-auto my-10">
       <div className="flex gap-6 justify-between ">

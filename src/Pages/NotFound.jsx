@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useTitle from '../Hooks/useTitle'
 
 function NotFound() {
+  useTitle('404 - Not Found')
   return (
     <div className='text-center my-20'>
         <h1 className='text-5xl lg:text-8xl font-bold mb-10'>404</h1>

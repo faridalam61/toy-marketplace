@@ -3,8 +3,10 @@ import Hero from "../Components/Hero";
 import PhotoGallery from "../Gallery/PhotoGallery";
 import ToyCard from "../Components/ToyCard";
 import ToyCardHome from "../Components/ToyCardHome";
+import useTitle from "../Hooks/useTitle";
 
 function Home() {
+  useTitle('Home')
   const [toys, setToys] = useState([]);
   const [tab, setTab] = useState("Race cars");
 

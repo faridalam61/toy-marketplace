@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import useTitle from "../Hooks/useTitle";
 
 function UpdateToy() {
+  useTitle('Update Toy')
   const toy = useLoaderData();
   console.log(toy);
 
@@ -38,7 +40,7 @@ function UpdateToy() {
   };
   return (
     <div>
-      <div className="w-2/3 bg-slate-100 mx-auto p-10 rounded-lg my-6 ">
+      <div className="w-full lg:w-2/3 bg-slate-100 mx-auto p-6 lg:p-10 rounded-lg my-6 ">
         <h1 className="text-3xl font-bold mb-6">Update {toy.name}</h1>
         <form onSubmit={handleUpdate}>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

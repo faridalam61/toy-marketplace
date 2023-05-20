@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ToyCard from "../Components/ToyCard";
+import useTitle from "../Hooks/useTitle";
 
 function AllToy() {
+  useTitle('All Toys')
   const [toys, setToys] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/toys")

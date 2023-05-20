@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useTitle from "../Hooks/useTitle";
 
 function AddToy() {
+  useTitle('Add Toy')
   const { user } = useContext(AuthContext);
   const [category, setCategory] = useState("");
   const handleChange = (e) => {
