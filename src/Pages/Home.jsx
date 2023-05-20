@@ -3,12 +3,13 @@ import Hero from "../Components/Hero";
 import PhotoGallery from "../Gallery/PhotoGallery";
 import ToyCardHome from "../Components/ToyCardHome";
 import useTitle from "../Hooks/useTitle";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SecondaryBanner from "../Components/SecondaryBanner";
 AOS.init();
 
 function Home() {
-  useTitle('Home')
+  useTitle("Home");
   const [toys, setToys] = useState([]);
   const [tab, setTab] = useState("Race cars");
 
@@ -55,6 +56,7 @@ function Home() {
             <ToyCardHome key={idx} toys={toy} />
           ))}
         </div>
+        <SecondaryBanner />
       </div>
     </div>
   );
